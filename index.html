@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Every programme at HMI Darjeeling, NIM Uttarkashi, JIM Pahalgam, NIMAS Dirang, ABVIMAS Manali, SGMI Gangtok, HAWS and ITBP Auli, with intake and live seats left where published.">
+<meta name="color-scheme" content="light dark">
+<title>Himalayan Institute Course Board</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  html{color-scheme:light dark}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<style>
+  :root{
+    --ground:#E9EDEF;
+    --surface:#FBFCFC;
+    --surface-2:#DFE5E8;
+    --ink:#141D24;
+    --muted:#586771;
+    --line:#C3CDD3;
+    --line-soft:#D5DDE1;
+    --accent:#1B5E6B;
+    --signal:#B44F2B;
+    --open:#2A6647;
+    --limited:#8B5E12;
+    --shut:#6E7C86;
+    --shadow:0 1px 0 rgba(20,29,36,.06);
+    --maxw:1180px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0D151A;
+      --surface:#151F26;
+      --surface-2:#1D2A33;
+      --ink:#E3EBEF;
+      --muted:#94A5B0;
+      --line:#2C3A44;
+      --line-soft:#243139;
+      --accent:#6BBECB;
+      --signal:#E08A61;
+      --open:#63BC90;
+      --limited:#D7A24A;
+      --shut:#85939D;
+      --shadow:0 1px 0 rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0D151A;
+    --surface:#151F26;
+    --surface-2:#1D2A33;
+    --ink:#E3EBEF;
+    --muted:#94A5B0;
+    --line:#2C3A44;
+    --line-soft:#243139;
+    --accent:#6BBECB;
+    --signal:#E08A61;
+    --open:#63BC90;
+    --limited:#D7A24A;
+    --shut:#85939D;
+    --shadow:0 1px 0 rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16.5px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- masthead ---------- */
+  .masthead{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .contours{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+  .masthead .wrap{position:relative;padding-top:52px;padding-bottom:38px}
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--signal);margin:0 0 14px;
+  }
+  h1{
+    font-family:"Zilla Slab",Georgia,serif;font-weight:700;
+    font-size:clamp(2.1rem,4.6vw,3.15rem);line-height:1.04;
+    letter-spacing:-.015em;margin:0;text-wrap:balance;max-width:16ch;
+  }
+  .standfirst{margin:16px 0 0;max-width:64ch;color:var(--muted);font-size:1.06rem}
+  .stamp{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 26px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;
+    letter-spacing:.04em;color:var(--muted);
+  }
+  .stamp b{color:var(--ink);font-weight:600}
+
+  /* ---------- index strip ---------- */
+  .index{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+    gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);
+    margin:34px 0 6px;
+  }
+  .index a{
+    background:var(--surface);padding:12px 14px 13px;text-decoration:none;color:inherit;
+    display:flex;flex-direction:column;gap:3px;transition:background .12s ease;
+  }
+  .index a:hover,.index a:focus-visible{background:var(--surface-2)}
+  .index .abbr{font-family:"Zilla Slab",Georgia,serif;font-weight:700;font-size:1.02rem;letter-spacing:-.01em}
+  .index .place{font-size:12.5px;color:var(--muted)}
+  .index .tally{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;
+    letter-spacing:.05em;color:var(--signal);margin-top:2px;
+  }
+  .index .tally.none{color:var(--shut)}
+
+  /* ---------- sections ---------- */
+  .band{padding:44px 0 10px}
+  .band-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:2px solid var(--ink);padding-top:12px;margin-bottom:6px}
+  .band-head h2{
+    font-family:"Zilla Slab",Georgia,serif;font-size:1.28rem;font-weight:700;margin:0;letter-spacing:-.01em;
+  }
+  .band-head p{margin:0;color:var(--muted);font-size:.94rem;max-width:60ch}
+
+  .inst{padding:30px 0 4px;border-bottom:1px solid var(--line-soft)}
+  .inst:last-child{border-bottom:0}
+  .inst-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline}
+  .inst-head h3{
+    font-family:"Zilla Slab",Georgia,serif;font-size:1.5rem;font-weight:700;
+    margin:0;letter-spacing:-.015em;
+  }
+  .inst-head .abbr-tag{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.1em;
+    color:var(--surface);background:var(--accent);padding:3px 7px;border-radius:2px;text-transform:uppercase;
+  }
+  .meta{
+    margin:10px 0 0;display:grid;gap:2px 22px;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    font-size:13.5px;color:var(--muted);
+  }
+  .meta span b{color:var(--ink);font-weight:600}
+  .meta a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+  .note{
+    margin:16px 0 0;padding:13px 16px;background:var(--surface);
+    border-left:3px solid var(--signal);font-size:14px;color:var(--muted);
+  }
+  .note b{color:var(--ink)}
+
+  /* ---------- tables ---------- */
+  .scroller{overflow-x:auto;margin-top:18px;border:1px solid var(--line-soft);background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:720px;font-size:14.2px}
+  caption{
+    text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-soft);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  th{
+    text-align:left;font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);padding:9px 14px;border-bottom:1px solid var(--line);white-space:nowrap;
+  }
+  td{padding:9px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  .num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .course-name{font-weight:600}
+  .course-name em{display:block;font-style:normal;font-weight:400;font-size:12.5px;color:var(--muted)}
+  .batches{display:flex;flex-direction:column;gap:5px}
+  .batch{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+  .batch .code{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;color:var(--muted);
+    min-width:66px;
+  }
+  .batch .when{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;font-variant-numeric:tabular-nums}
+  .pill{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.04em;
+    padding:1px 7px;border-radius:9px;border:1px solid currentColor;white-space:nowrap;
+  }
+  .pill.open{color:var(--open)}
+  .pill.limited{color:var(--limited)}
+  .pill.shut{color:var(--shut)}
+
+  .legend{
+    display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;
+    margin:20px 0 0;font-size:13px;color:var(--muted);
+  }
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding:22px 0 60px;font-size:13.5px;color:var(--muted)}
+  footer h4{font-family:"Zilla Slab",Georgia,serif;font-size:1rem;margin:0 0 8px;color:var(--ink)}
+  footer ul{margin:0;padding-left:18px}
+  footer li{margin-bottom:4px}
+  footer a{color:var(--accent)}
+  a:focus-visible,.index a:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <svg class="contours" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="none" stroke="var(--line)" stroke-width="1">
+      <path d="M-20,238 C160,214 250,246 400,222 C560,196 640,232 820,204 C960,182 1080,206 1220,186"/>
+      <path d="M-20,212 C150,186 260,220 410,192 C570,163 660,200 830,170 C970,146 1090,172 1220,150"/>
+      <path d="M-20,184 C140,156 270,192 420,160 C580,127 680,166 840,134 C980,107 1100,136 1220,112"/>
+      <path d="M-20,154 C130,124 280,162 430,127 C590,90 700,131 850,96 C990,66 1110,98 1220,72"/>
+      <path d="M-20,122 C120,90 290,130 440,92 C600,52 720,94 860,56 C1000,22 1120,58 1220,30"/>
+      <path d="M-20,88 C110,54 300,96 450,55 C610,12 740,56 870,16"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow">Course intake survey · compiled 5 September 2026</p>
+    <h1>Himalayan Institute Course Board</h1>
+    <p class="standfirst">Every programme run by the eight institutes you asked about — HMI, NIM, JIM, NIMAS, ABVIMAS, SGMI, HAWS and ITBP Auli — with per-course intake and, where the institute publishes it, live seats left on each batch.</p>
+    <div class="stamp">
+      <span><b>5</b> institutes take public bookings</span>
+      <span><b>3</b> admit only by nomination or enquiry</span>
+      <span><b>60+</b> distinct programmes</span>
+    </div>
+    <nav class="index" aria-label="Jump to institute">
+      <a href="#hmi"><span class="abbr">HMI</span><span class="place">Darjeeling, WB</span><span class="tally">26 seats open</span></a>
+      <a href="#nim"><span class="abbr">NIM</span><span class="place">Uttarkashi, UK</span><span class="tally">1,220 seats/yr</span></a>
+      <a href="#jim"><span class="abbr">JIM &amp; WS</span><span class="place">Pahalgam, J&amp;K</span><span class="tally">60 seats open</span></a>
+      <a href="#nimas"><span class="abbr">NIMAS</span><span class="place">Dirang, AR</span><span class="tally">210 seats open</span></a>
+      <a href="#abvimas"><span class="abbr">ABVIMAS</span><span class="place">Manali, HP</span><span class="tally">21 programmes</span></a>
+      <a href="#sgmi"><span class="abbr">SGMI</span><span class="place">Gangtok, SK</span><span class="tally none">by enquiry</span></a>
+      <a href="#haws"><span class="abbr">HAWS</span><span class="place">Gulmarg / Sonamarg</span><span class="tally none">service only</span></a>
+      <a href="#itbp"><span class="abbr">MSI Auli</span><span class="place">Auli, UK</span><span class="tally none">service only</span></a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="band">
+  <div class="band-head">
+    <h2>Open enrolment</h2>
+    <p>These five publish a course calendar and take applications from the public. Only HMI and NIMAS show a live seats-left figure; NIM, JIM and ABVIMAS publish sanctioned intake and mark a batch full.</p>
+  </div>
+
+  <!-- ================= HMI ================= -->
+  <article class="inst" id="hmi">
+    <div class="inst-head">
+      <h3>Himalayan Mountaineering Institute</h3>
+      <span class="abbr-tag">HMI · Darjeeling</span>
+    </div>
+    <div class="meta">
+      <span><b>Run by</b> Ministry of Defence, Govt. of India</span>
+      <span><b>Season</b> Mar–Jun, Sep–Dec; winter courses Jan–Feb</span>
+      <span><b>Booking</b> <a href="https://admission.hmidarjeeling.com/online-admission-2026-2027/">admission.hmidarjeeling.com</a></span>
+      <span><b>Base</b> Chowrikhang / Rathong Glacier, Sikkim</span>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Course programme 2026–27 · seats remaining as shown on the admission portal</caption>
+        <thead>
+          <tr><th>Programme</th><th>Days</th><th>Age</th><th class="num">Intake</th><th>Batches &amp; seats left</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="course-name">Basic Mountaineering<em>Course nos. 374–379</em></td>
+            <td class="num">28</td><td class="num">17–45</td><td class="num">60–100</td>
+            <td><div class="batches">
+              <div class="batch"><span class="code">BMC 376</span><span class="when">20 Sep – 17 Oct 26</span><span class="pill shut">closed</span></div>
+              <div class="batch"><span class="code">BMC 377</span><span class="when">21 Oct – 17 Nov 26</span><span class="pill shut">closed</span></div>
+              <div class="batch"><span class="code">BMC 378</span><span class="when">21 Nov – 18 Dec 26</span><span class="pill shut">closed</span></div>
+              <div class="batch"><span class="code">BMC 379</span><span class="when">01 – 28 Mar 27 (men)</span><span class="pill open">26 of 60 left</span></div>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Advance Mountaineering<em>Requires ‘A’ grade in Basic</em></td>
+            <td class="num">28</td><td class="num">17–45</td><td class="num">40</td>
+            <td><div class="batches">
+              <div class="batch"><span class="code">AMC 207</span><span class="when">20 Sep – 17 Oct 26</span><span class="pill shut">closed</span></div>
+              <div class="batch"><span class="code">AMC 208</span><span class="when">21 Oct – 17 Nov 26</span><span class="pill shut">closed</span></div>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Search &amp; Rescue</td>
+            <td class="num">23</td><td class="num">17–45</td><td class="num">30</td>
+            <td><div class="batches"><div class="batch"><span class="code">S&amp;R 09</span><span class="when">06 – 28 Mar 27</span><span class="pill open">25 left</span></div></div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Method of Instruction</td>
+            <td class="num">23</td><td class="num">17–45</td><td class="num">20</td>
+            <td><div class="batches"><div class="batch"><span class="code">MOI 36</span><span class="when">03 – 25 May 26</span><span class="pill limited">9 left · batch past</span></div></div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Adventure Course<em>Youth 12–17 and adult batches</em></td>
+            <td class="num">15</td><td class="num">12–45</td><td class="num">70</td>
+            <td><div class="batches">
+              <div class="batch"><span class="code">Adv 268</span><span class="when">20 Dec 26 – 03 Jan 27</span><span class="pill open">65 left</span></div>
+              <div class="batch"><span class="code">Adv 269</span><span class="when">10 – 24 Jan 27</span><span class="pill open">68 left</span></div>
+              <div class="batch"><span class="code">Adv 270</span><span class="when">29 Jan – 12 Feb 27</span><span class="pill open">69 left</span></div>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Adventure Course — special<em>Visually impaired &amp; underprivileged, free</em></td>
+            <td class="num">15</td><td class="num">12+</td><td class="num">30</td>
+            <td><div class="batches"><div class="batch"><span class="code">Special</span><span class="when">18 May – 01 Jun 27</span><span class="pill open">30 left</span></div></div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Sport &amp; Rock Climbing<em>Actual-cost basis, ₹13,288</em></td>
+            <td class="num">5</td><td class="num">12+</td><td class="num">20</td>
+            <td><div class="batches"><div class="batch"><span class="code">SRC 18–20</span><span class="when">three batches, Dec 26 – May 27</span><span class="pill open">20 each</span></div></div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Winter Alpine Climbing<em>₹74,405</em></td>
+            <td class="num">21</td><td class="num">17–45</td><td class="num">20</td>
+            <td><div class="batches"><div class="batch"><span class="code">WAC</span><span class="when">15 Jan – 04 Feb 27</span><span class="pill open">20 left</span></div></div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Winter Trek to Base Camp<em>₹53,147</em></td>
+            <td class="num">15</td><td class="num">17–45</td><td class="num">20</td>
+            <td><div class="batches"><div class="batch"><span class="code">WT</span><span class="when">16 – 30 Jan 27</span><span class="pill open">20 left</span></div></div></td>
+          </tr>
+          <tr>
+            <td class="course-name">Treks &amp; expeditions<em>Sandakphu, HMI Base Camp, Chowrikhang, Mt Rhenock</em></td>
+            <td class="num">7–21</td><td class="num">17–45</td><td class="num">10–40</td>
+            <td><div class="batches">
+              <div class="batch"><span class="code">Base Camp</span><span class="when">Oct – Nov 26 · 10 d</span><span class="pill open">9 of 10</span></div>
+              <div class="batch"><span class="code">Mountaineering</span><span class="when">Oct – Nov 26 · 20 d</span><span class="pill open">9 of 10</span></div>
+              <div class="batch"><span class="code">Chowrikhang</span><span class="when">25 Nov – 09 Dec 26</span><span class="pill open">40 of 40</span></div>
+              <div class="batch"><span class="code">Mt Rhenock</span><span class="when">25 Nov – 14 Dec 26</span><span class="pill open">30 of 30</span></div>
+            </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>Reading the portal:</b> HMI charges ₹24,802 for the subsidised seats on Basic, Advance, S&amp;R and MOI, plus roughly ten extra vacancies per course at the actual cost of ₹90,189. The live portal still lists some batches whose dates have passed — check the date before reading a seat count as bookable.</p>
+  </article>
+
+  <!-- ================= NIM ================= -->
+  <article class="inst" id="nim">
+    <div class="inst-head">
+      <h3>Nehru Institute of Mountaineering</h3>
+      <span class="abbr-tag">NIM · Uttarkashi</span>
+    </div>
+    <div class="meta">
+      <span><b>Run by</b> Ministry of Defence, Govt. of India</span>
+      <span><b>Published</b> full 2026 and 2027 training programmes</span>
+      <span><b>Booking</b> <a href="https://www.nimindia.net/downloads">nimindia.net</a> (no live vacancy counter)</span>
+      <span><b>Base</b> Tekhla ridge / Bhagirathi valley</span>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>2026 training programme · sanctioned seats per course</caption>
+        <thead>
+          <tr><th>Programme</th><th>Days</th><th>Age</th><th class="num">Seats</th><th class="num">Fee</th><th>2026 batches</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-name">Basic Mountaineering<em>Nos. 291–295; one all-ladies batch</em></td><td class="num">28</td><td class="num">16–40</td><td class="num">80–90</td><td class="num">₹27,286</td><td>5 batches, Mar–Nov · <b>440 seats</b></td></tr>
+          <tr><td class="course-name">Advance Mountaineering<em>‘A’ grade in Basic required</em></td><td class="num">28</td><td class="num">18–42</td><td class="num">40</td><td class="num">₹27,286</td><td>3 batches, Apr–Oct · 120 seats</td></tr>
+          <tr><td class="course-name">Search &amp; Rescue<em>‘A’ grade in Advance required</em></td><td class="num">21</td><td class="num">19–45</td><td class="num">70</td><td class="num">₹27,286</td><td>22 Mar – 11 Apr 26</td></tr>
+          <tr><td class="course-name">Method of Instruction</td><td class="num">21</td><td class="num">19–45</td><td class="num">25</td><td class="num">₹27,286</td><td>19 Oct – 08 Nov 26</td></tr>
+          <tr><td class="course-name">Adventure Course<em>Separate girls, boys and adult batches</em></td><td class="num">14</td><td class="num">14–50</td><td class="num">70</td><td class="num">₹14,617</td><td>4 batches, Jun &amp; Nov–Dec · 280 seats</td></tr>
+          <tr><td class="course-name">Basic Skiing<em>Subject to snowfall</em></td><td class="num">14</td><td class="num">16–40</td><td class="num">40</td><td class="num">₹27,286</td><td>28 Jan – 10 Feb 26</td></tr>
+          <tr><td class="course-name">Intermediate Skiing</td><td class="num">14</td><td class="num">16–40</td><td class="num">25</td><td class="num">₹27,286</td><td>01 – 14 Feb 26</td></tr>
+          <tr><td class="course-name">Sport Climbing</td><td class="num">11</td><td class="num">14–30</td><td class="num">50</td><td class="num">₹14,617</td><td>2 batches, Jul &amp; Aug · 100 seats</td></tr>
+          <tr><td class="course-name">Basic Mountain Terrain Biking</td><td class="num">11</td><td class="num">16–45</td><td class="num">30</td><td class="num">₹26,354</td><td>3 batches, Mar / Sep / Nov · 90 seats</td></tr>
+          <tr><td class="course-name">Advanced Mountain Terrain Biking</td><td class="num">11</td><td class="num">16–45</td><td class="num">30</td><td class="num">₹32,210</td><td>25 Jun – 05 Jul 26</td></tr>
+          <tr><td class="course-name">On request<em>Rock climbing, disaster rescue, mountain guide</em></td><td class="num">5–21</td><td class="num">—</td><td class="num">n/a</td><td class="num">at cost</td><td>Booked as a group, full-cost basis</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>2027 is already published</b> and repeats the same structure with course numbers 296–300 (Basic), 185–187 (Advance), 39 (S&amp;R) and 34 (MOI); the fee rises to ₹30,015 and Basic dates shift to 22 Mar – 15 Nov 2027. NIM does not display remaining seats — you learn your status when the selection letter arrives.</p>
+  </article>
+
+  <!-- ================= JIM ================= -->
+  <article class="inst" id="jim">
+    <div class="inst-head">
+      <h3>Jawahar Institute of Mountaineering &amp; Winter Sports</h3>
+      <span class="abbr-tag">JIM &amp; WS · Pahalgam</span>
+    </div>
+    <div class="meta">
+      <span><b>Run by</b> Govt. of Jammu &amp; Kashmir</span>
+      <span><b>Two fee bands</b> ₹18,500 J&amp;K residents · ₹27,300 others</span>
+      <span><b>Booking</b> <a href="https://www.jawaharinstitutepahalgam.com/">jawaharinstitutepahalgam.com</a></span>
+      <span><b>Winter base</b> Aru / Gulmarg snowfields</span>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Course programme 2026–27 · vacancies as printed, with batch status</caption>
+        <thead>
+          <tr><th>Programme</th><th>Days</th><th>Age</th><th class="num">Vacancies</th><th>Batches &amp; status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="course-name">Basic Mountaineering<em>Nos. 155–158</em></td><td class="num">24</td><td class="num">17–40</td><td class="num">60</td><td><div class="batches"><div class="batch"><span class="when">May, Jun, Jul, Aug 26</span><span class="pill shut">all four completed or full</span></div></div></td></tr>
+          <tr><td class="course-name">Advance Mountaineering<em>‘A’ grade in Basic required</em></td><td class="num">24</td><td class="num">17–42</td><td class="num">40</td><td><div class="batches">
+            <div class="batch"><span class="code">AMC 55</span><span class="when">07 – 30 Sep 26</span><span class="pill open">available</span></div></div></td></tr>
+          <tr><td class="course-name">Method of Instruction</td><td class="num">15</td><td class="num">17–45</td><td class="num">20</td><td><div class="batches"><div class="batch"><span class="code">MOI 24</span><span class="when">16 – 30 Sep 26</span><span class="pill open">available</span></div></div></td></tr>
+          <tr><td class="course-name">Adventure Course<em>₹10,000 / ₹14,700</em></td><td class="num">15</td><td class="num">12–50</td><td class="num">50</td><td><div class="batches"><div class="batch"><span class="when">Apr – May 26</span><span class="pill shut">completed</span></div></div></td></tr>
+          <tr><td class="course-name">Basic Skiing<em>Nos. 73–76 · ₹18,500 / ₹19,700</em></td><td class="num">14</td><td class="num">12–45</td><td class="num">30–60</td><td><div class="batches">
+            <div class="batch"><span class="code">Ski 73</span><span class="when">02 – 15 Jan 27</span><span class="pill open">60 vac</span></div>
+            <div class="batch"><span class="code">Ski 74</span><span class="when">19 Jan – 01 Feb 27</span><span class="pill open">60 vac</span></div>
+            <div class="batch"><span class="code">Ski 75</span><span class="when">05 – 18 Feb 27</span><span class="pill shut">full</span></div>
+            <div class="batch"><span class="code">Ski 76</span><span class="when">22 Feb – 07 Mar 27</span><span class="pill open">30 vac</span></div></div></td></tr>
+          <tr><td class="course-name">Intermediate Skiing</td><td class="num">14</td><td class="num">12–45</td><td class="num">30</td><td><div class="batches"><div class="batch"><span class="when">05 – 18 Feb 27</span><span class="pill shut">full</span></div></div></td></tr>
+          <tr><td class="course-name">Advance Skiing</td><td class="num">14</td><td class="num">12–45</td><td class="num">30</td><td><div class="batches"><div class="batch"><span class="when">22 Feb – 07 Mar 27</span><span class="pill open">available</span></div></div></td></tr>
+          <tr><td class="course-name">Method of Instruction — Skiing</td><td class="num">14</td><td class="num">12–45</td><td class="num">20</td><td><div class="batches"><div class="batch"><span class="when">22 Feb – 07 Mar 27</span><span class="pill open">available</span></div></div></td></tr>
+          <tr><td class="course-name">Snowboarding<em>Nos. 09–12 · ₹30,000 flat</em></td><td class="num">14</td><td class="num">12–45</td><td class="num">40</td><td><div class="batches"><div class="batch"><span class="when">four batches, 04 Jan – 09 Mar 27</span><span class="pill open">160 seats total</span></div></div></td></tr>
+          <tr><td class="course-name">Search &amp; Rescue</td><td class="num">15</td><td class="num">17–45</td><td class="num">20</td><td><div class="batches"><div class="batch"><span class="when">12 – 26 Mar 27</span><span class="pill open">available</span></div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">JIM is the strongest of the eight on <b>winter sports</b>: four basic ski batches, intermediate and advance ski, ski instructor and four snowboarding batches make up more than half its annual intake.</p>
+  </article>
+
+  <!-- ================= NIMAS ================= -->
+  <article class="inst" id="nimas">
+    <div class="inst-head">
+      <h3>National Institute of Mountaineering &amp; Adventure Sports</h3>
+      <span class="abbr-tag">NIMAS · Dirang</span>
+    </div>
+    <div class="meta">
+      <span><b>Run by</b> Ministry of Defence, Govt. of India</span>
+      <span><b>Verticals</b> land · air · aqua — the widest catalogue of the eight</span>
+      <span><b>Booking</b> <a href="https://nimasdirang.com/Mountaineering-courses">nimasdirang.com</a> — live seat counter</span>
+      <span><b>Note</b> Indian nationals only (proximity to the LAC)</span>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Live availability · land verticals</caption>
+        <thead><tr><th>Programme</th><th>Days</th><th class="num">Intake</th><th class="num">Fee</th><th>Open batches &amp; seats</th></tr></thead>
+        <tbody>
+          <tr><td class="course-name">Basic Mountaineering</td><td class="num">28</td><td class="num">80</td><td class="num">₹29,800</td><td><div class="batches">
+            <div class="batch"><span class="code">BMC 61–63</span><span class="when">Aug – Nov 26</span><span class="pill shut">sold out</span></div>
+            <div class="batch"><span class="code">BMC 64</span><span class="when">20 Mar – 16 Apr 27</span><span class="pill open">15 left</span></div></div></td></tr>
+          <tr><td class="course-name">Advance Mountaineering</td><td class="num">32</td><td class="num">30</td><td class="num">₹33,010</td><td><div class="batches"><div class="batch"><span class="code">AMC 23</span><span class="when">19 Aug – 19 Sep 26</span><span class="pill shut">sold out</span></div></div></td></tr>
+          <tr><td class="course-name">Method of Instruction</td><td class="num">28</td><td class="num">15</td><td class="num">₹48,400</td><td><div class="batches"><div class="batch"><span class="code">MOI 09</span><span class="when">27 Oct – 23 Nov 26</span><span class="pill open">15 left</span></div></div></td></tr>
+          <tr><td class="course-name">Search &amp; Rescue</td><td class="num">21</td><td class="num">15</td><td class="num">₹26,590</td><td><div class="batches"><div class="batch"><span class="code">S&amp;R 08</span><span class="when">27 Feb – 19 Mar 27</span><span class="pill open">15 left</span></div></div></td></tr>
+          <tr><td class="course-name">Sport Climbing<em>Artificial wall; leads to state / national comps</em></td><td class="num">10</td><td class="num">20</td><td class="num">₹12,000</td><td><div class="batches"><div class="batch"><span class="code">SCC 04</span><span class="when">26 Sep – 05 Oct 26</span><span class="pill open">9 left</span></div></div></td></tr>
+          <tr><td class="course-name">Basic Mountain Terrain Biking</td><td class="num">12</td><td class="num">15</td><td class="num">₹31,420</td><td><div class="batches">
+            <div class="batch"><span class="code">BMTB 26</span><span class="when">11 – 22 Sep 26</span><span class="pill limited">4 left</span></div>
+            <div class="batch"><span class="code">BMTB 27</span><span class="when">02 – 13 Mar 27</span><span class="pill limited">5 left</span></div></div></td></tr>
+          <tr><td class="course-name">Advance Mountain Terrain Biking</td><td class="num">12</td><td class="num">10</td><td class="num">₹35,430</td><td><div class="batches">
+            <div class="batch"><span class="code">AMTB 12</span><span class="when">25 Sep – 09 Oct 26</span><span class="pill limited">5 left</span></div>
+            <div class="batch"><span class="code">AMTB 13</span><span class="when">16 – 30 Mar 27</span><span class="pill open">10 left</span></div></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Live availability · aqua and aero verticals</caption>
+        <thead><tr><th>Programme</th><th>Days</th><th class="num">Intake</th><th class="num">Fee</th><th>Open batches &amp; seats</th></tr></thead>
+        <tbody>
+          <tr><td class="course-name">Basic White Water Rafting<em>Kameng river</em></td><td class="num">10</td><td class="num">16</td><td class="num">₹20,930</td><td><div class="batches">
+            <div class="batch"><span class="code">BWWR 49–50</span><span class="when">Nov – Dec 26</span><span class="pill open">14 &amp; 15 left</span></div>
+            <div class="batch"><span class="code">BWWR 51–53</span><span class="when">Jan – Mar 27</span><span class="pill open">16 each</span></div></div></td></tr>
+          <tr><td class="course-name">Intermediate White Water Rafting</td><td class="num">12</td><td class="num">12</td><td class="num">₹26,590</td><td><div class="batches"><div class="batch"><span class="code">IWWR 30–34</span><span class="when">Nov 26 – Mar 27</span><span class="pill open">12 on each of 5</span></div></div></td></tr>
+          <tr><td class="course-name">Beginner White Water Kayaking</td><td class="num">7</td><td class="num">6</td><td class="num">₹26,400</td><td><div class="batches"><div class="batch"><span class="code">BWWKC 03–04</span><span class="when">Nov 26 &amp; Jan 27</span><span class="pill shut">both sold</span></div></div></td></tr>
+          <tr><td class="course-name">Basic Scuba Diving</td><td class="num">5</td><td class="num">10</td><td class="num">₹29,280</td><td><div class="batches">
+            <div class="batch"><span class="code">BSDC 23</span><span class="when">11 – 15 Nov 26</span><span class="pill shut">sold</span></div>
+            <div class="batch"><span class="code">BSDC 24</span><span class="when">09 – 13 Feb 27</span><span class="pill limited">4 left</span></div></div></td></tr>
+          <tr><td class="course-name">Advance Scuba Diving</td><td class="num">4</td><td class="num">10</td><td class="num">₹29,040</td><td><div class="batches">
+            <div class="batch"><span class="code">ASDC 21</span><span class="when">17 – 20 Nov 26</span><span class="pill open">10 left</span></div>
+            <div class="batch"><span class="code">ASDC 22</span><span class="when">15 – 18 Feb 27</span><span class="pill limited">4 left</span></div></div></td></tr>
+          <tr><td class="course-name">Combined Scuba<em>Basic + Advance + Rescue</em></td><td class="num">15</td><td class="num">10</td><td class="num">₹73,210</td><td><div class="batches">
+            <div class="batch"><span class="code">CSDC 09</span><span class="when">25 Oct – 08 Nov 26</span><span class="pill limited">4 left</span></div>
+            <div class="batch"><span class="code">CSDC 10</span><span class="when">28 Feb – 14 Mar 27</span><span class="pill open">7 left</span></div></div></td></tr>
+          <tr><td class="course-name">Search &amp; Rescue Scuba Diving</td><td class="num">6</td><td class="num">8</td><td class="num">₹26,620</td><td><div class="batches"><div class="batch"><span class="code">S&amp;RSDC 16–17</span><span class="when">Nov 26 &amp; Feb 27</span><span class="pill open">8 on each</span></div></div></td></tr>
+          <tr><td class="course-name">Basic &amp; Intermediate Paragliding<em>P1–P2, Pappu Valley, ~10 solo launches</em></td><td class="num">10</td><td class="num">15</td><td class="num">₹35,430</td><td><div class="batches"><div class="batch"><span class="code">BIPG 28–30</span><span class="when">Nov 26 – Jan 27</span><span class="pill shut">all sold</span></div></div></td></tr>
+          <tr><td class="course-name">Advance Paragliding<em>P3 level</em></td><td class="num">8</td><td class="num">15</td><td class="num">₹38,640</td><td><div class="batches">
+            <div class="batch"><span class="code">APGC 22</span><span class="when">14 – 21 Nov 26</span><span class="pill open">15 left</span></div>
+            <div class="batch"><span class="code">APGC 23</span><span class="when">04 – 11 Dec 26</span><span class="pill open">13 left</span></div>
+            <div class="batch"><span class="code">APGC 24</span><span class="when">23 – 30 Jan 27</span><span class="pill open">15 left</span></div></div></td></tr>
+          <tr><td class="course-name">Combined Paragliding<em>P1–P3</em></td><td class="num">18</td><td class="num">15</td><td class="num">₹74,090</td><td><div class="batches">
+            <div class="batch"><span class="code">CPGC 12</span><span class="when">14 – 31 Oct 26</span><span class="pill shut">sold</span></div>
+            <div class="batch"><span class="code">CPGC 13</span><span class="when">02 – 19 Feb 27</span><span class="pill open">13 left</span></div></div></td></tr>
+          <tr><td class="course-name">Basic Paramotor<em>India’s only civilian foot-launch paramotor course</em></td><td class="num">15</td><td class="num">15</td><td class="num">₹44,300</td><td><div class="batches">
+            <div class="batch"><span class="code">BPMC 26</span><span class="when">03 – 17 Nov 26</span><span class="pill open">14 left</span></div>
+            <div class="batch"><span class="code">BPMC 27–29</span><span class="when">Jan – Mar 27</span><span class="pill open">15, 15, 14 left</span></div></div></td></tr>
+          <tr><td class="course-name">Intermediate Paramotor</td><td class="num">12</td><td class="num">8</td><td class="num">₹53,140</td><td><div class="batches"><div class="batch"><span class="code">IPMC 21–24</span><span class="when">Nov 26 – Mar 27</span><span class="pill open">8 on each of 4</span></div></div></td></tr>
+          <tr><td class="course-name">Paramotor Trike</td><td class="num">15</td><td class="num">10</td><td class="num">₹75,000</td><td><div class="batches"><div class="batch"><span class="code">PMTC 01–02</span><span class="when">Oct &amp; Dec 26</span><span class="pill open">9 on each</span></div></div></td></tr>
+          <tr><td class="course-name">Refresher courses<em>Paragliding and paramotor</em></td><td class="num">10</td><td class="num">15</td><td class="num">₹40,000</td><td>Scheduled on demand</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>Where the seats actually are right now.</b> NIMAS mountaineering is effectively shut until March 2027, but roughly 210 seats sit open across rafting, scuba, advance paragliding and paramotor between November 2026 and March 2027 — the least contested adventure training in the country at the moment.</p>
+  </article>
+
+  <!-- ================= ABVIMAS ================= -->
+  <article class="inst" id="abvimas">
+    <div class="inst-head">
+      <h3>Atal Bihari Vajpayee Institute of Mountaineering &amp; Allied Sports</h3>
+      <span class="abbr-tag">ABVIMAS · Manali</span>
+    </div>
+    <div class="meta">
+      <span><b>Run by</b> Dept. of Youth Services &amp; Sports, Himachal Pradesh</span>
+      <span><b>Centres</b> Manali · Solang · Narkanda · Dharamshala · Pong Dam · Pirdi</span>
+      <span><b>Booking</b> <a href="https://www.abvimas.org/course/availability/">abvimas.org</a> — online only for 2026</span>
+      <span><b>Widest allied catalogue</b> 21 published programmes</span>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Sanctioned intake per course · live vacancy sits behind the booking form</caption>
+        <thead><tr><th>Programme</th><th>Days</th><th>Age</th><th class="num">Seats</th><th class="num">Fee (Indian)</th><th>Centre &amp; window</th></tr></thead>
+        <tbody>
+          <tr><td class="course-name">Basic Mountaineering</td><td class="num">26</td><td class="num">16–45</td><td class="num">75</td><td class="num">₹25,000</td><td>Manali · 5 batches May–Oct</td></tr>
+          <tr><td class="course-name">Special Basic Mountaineering</td><td class="num">26</td><td class="num">16–45</td><td class="num">75</td><td class="num">₹28,800</td><td>Manali · on request</td></tr>
+          <tr><td class="course-name">Advance Mountaineering</td><td class="num">28</td><td class="num">16–45</td><td class="num">30</td><td class="num">₹27,000</td><td>Manali · 3 batches May–Sep</td></tr>
+          <tr><td class="course-name">Special Advance Mountaineering</td><td class="num">28</td><td class="num">16–45</td><td class="num">30</td><td class="num">₹28,800</td><td>Manali · on request</td></tr>
+          <tr><td class="course-name">Method of Instruction — Mountaineering</td><td class="num">28</td><td class="num">16–45</td><td class="num">25</td><td class="num">₹27,000</td><td>Manali · 29 Sep – 26 Oct</td></tr>
+          <tr><td class="course-name">Elementary Skiing</td><td class="num">7</td><td class="num">10+</td><td class="num">15</td><td class="num">₹7,200</td><td>Solang · Jan–Mar, many batches</td></tr>
+          <tr><td class="course-name">Basic Snow Skiing</td><td class="num">14</td><td class="num">10+</td><td class="num">40</td><td class="num">₹14,500</td><td>Solang / Narkanda · 5 batches Jan–Mar</td></tr>
+          <tr><td class="course-name">Intermediate Snow Skiing</td><td class="num">14</td><td class="num">11+</td><td class="num">25</td><td class="num">₹14,500</td><td>Solang / Narkanda · Feb &amp; Mar</td></tr>
+          <tr><td class="course-name">Advance Snow Skiing</td><td class="num">14</td><td class="num">11+</td><td class="num">25</td><td class="num">₹14,500</td><td>Solang · 11 – 24 Jan</td></tr>
+          <tr><td class="course-name">Special Basic Skiing</td><td class="num">14</td><td class="num">10+</td><td class="num">15</td><td class="num">₹14,500</td><td>Solang · customised Jan–Apr</td></tr>
+          <tr><td class="course-name">Basic Nordic Skiing</td><td class="num">14</td><td class="num">10+</td><td class="num">20</td><td class="num">₹14,500</td><td>Solang · 01 – 14 Mar</td></tr>
+          <tr><td class="course-name">Basic Grass Skiing<em>Summer skiing on grass slopes</em></td><td class="num">7</td><td class="num">11+</td><td class="num">20</td><td class="num">₹9,600</td><td>Solang · 01 – 07 Aug</td></tr>
+          <tr><td class="course-name">Snowboarding</td><td class="num">14</td><td class="num">—</td><td class="num">n/p</td><td class="num">₹22,500</td><td>Solang · winter</td></tr>
+          <tr><td class="course-name">Method of Instruction — Skiing</td><td class="num">21</td><td class="num">16+</td><td class="num">15</td><td class="num">₹21,700</td><td>Solang · 04 – 24 Feb</td></tr>
+          <tr><td class="course-name">Basic Water Sports</td><td class="num">14</td><td class="num">12+</td><td class="num">60</td><td class="num">₹10,500</td><td>Pirdi / Pong Dam · 5 batches</td></tr>
+          <tr><td class="course-name">Elementary Water Sports (sailing)</td><td class="num">7</td><td class="num">12+</td><td class="num">n/p</td><td class="num">₹7,000</td><td>Pong Dam</td></tr>
+          <tr><td class="course-name">Advance Water Sports (sailing)</td><td class="num">21</td><td class="num">14+</td><td class="num">25</td><td class="num">₹15,750</td><td>Pong Dam · 01 – 21 Jul</td></tr>
+          <tr><td class="course-name">Water Skiing</td><td class="num">7</td><td class="num">12+</td><td class="num">n/p</td><td class="num">₹10,500</td><td>Pong Dam · customised</td></tr>
+          <tr><td class="course-name">Basic River Rafting</td><td class="num">14</td><td class="num">12+</td><td class="num">30</td><td class="num">₹14,000</td><td>Pirdi, Kullu · 01 – 14 Oct</td></tr>
+          <tr><td class="course-name">Elementary Search &amp; Rescue</td><td class="num">7</td><td class="num">16–45</td><td class="num">20</td><td class="num">₹7,000</td><td>5 centres · Apr–Jun, Sep–Oct</td></tr>
+          <tr><td class="course-name">Search &amp; Rescue<em>Disaster management</em></td><td class="num">14</td><td class="num">16–45</td><td class="num">14</td><td class="num">₹14,000</td><td>Manali · Apr–Jun, Sep–Oct</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>Two gaps to know about.</b> The aero-sports / paragliding list is still marked “coming soon”, and the live seat chart only returns numbers after you pick a session and activity in the booking form — so the figures above are sanctioned intake, not seats left today. Foreign-national fees run 3–4× the Indian rate (₹92,500 for Basic Mountaineering).</p>
+  </article>
+</section>
+
+<section class="band">
+  <div class="band-head">
+    <h2>Not publicly bookable</h2>
+    <p>These three publish no course calendar and no vacancy figures. Two are service training establishments; the third takes civilians but only by direct application.</p>
+  </div>
+
+  <article class="inst" id="sgmi">
+    <div class="inst-head">
+      <h3>Sonam Gyatso Mountaineering Institute</h3>
+      <span class="abbr-tag">SGMI · Gangtok</span>
+    </div>
+    <div class="meta">
+      <span><b>Run by</b> Govt. of Sikkim; IMF-recognised</span>
+      <span><b>Primary role</b> high-altitude training for the Army, IB, ITBP and Assam Rifles</span>
+      <span><b>Civilian access</b> short courses, applied for directly</span>
+      <span><b>Principal</b> Sonam Wangyal</span>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Course structure as documented · no published dates or seat counts</caption>
+        <thead><tr><th>Programme</th><th>Days</th><th>Entry</th><th class="num">Seats</th></tr></thead>
+        <tbody>
+          <tr><td class="course-name">Basic Mountaineering</td><td class="num">28</td><td>Open, basic fitness</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Advance Mountaineering</td><td class="num">28</td><td>‘A’ grade in Basic</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Search &amp; Rescue</td><td class="num">~21</td><td>Advance graduates</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Method of Instruction</td><td class="num">~21</td><td>Experienced climbers</td><td class="num">not published</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">SGMI runs no online admission portal and publishes no calendar. Availability has to be confirmed by writing to or phoning the institute at Gangtok — it is the one institute on this list where a seat count simply cannot be looked up.</p>
+  </article>
+
+  <article class="inst" id="haws">
+    <div class="inst-head">
+      <h3>High Altitude Warfare School</h3>
+      <span class="abbr-tag">HAWS · c/o 56 APO</span>
+    </div>
+    <div class="meta">
+      <span><b>Run by</b> Indian Army</span>
+      <span><b>Sites</b> Gulmarg (winter) · Sonamarg (summer) · Machoi, across Zojila (ice craft)</span>
+      <span><b>Entry</b> unit nomination only; no civilian intake</span>
+      <span><b>Also trains</b> officers from allied armies</span>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Training capsules · intake is internal and not published</caption>
+        <thead><tr><th>Programme</th><th>Window</th><th>Location</th><th class="num">Seats</th></tr></thead>
+        <tbody>
+          <tr><td class="course-name">Winter Warfare Course</td><td>January – April</td><td>Gulmarg</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Mountain Warfare Course</td><td>May – October</td><td>Sonamarg</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Ice craft training</td><td>Seasonal</td><td>Machoi</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Winter sports<em>Alpine, Nordic, snowboarding</em></td><td>Winter</td><td>Gulmarg</td><td class="num">not published</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">HAWS trains the troops who hold Siachen and the high-altitude posts along the Himalayan frontier. Course vacancies are allotted through Army training channels; there is no application route from outside the service, and intake figures are not in the public domain.</p>
+  </article>
+
+  <article class="inst" id="itbp">
+    <div class="inst-head">
+      <h3>Mountaineering &amp; Skiing Institute, ITBP</h3>
+      <span class="abbr-tag">MSI · Auli</span>
+    </div>
+    <div class="meta">
+      <span><b>Run by</b> Indo-Tibetan Border Police, MHA</span>
+      <span><b>Site</b> Auli, Chamoli district, Uttarakhand</span>
+      <span><b>Entry</b> ITBP and other CAPF / government nominations</span>
+      <span><b>Also hosts</b> pre-Antarctic training for NCPOR expedition members</span>
+    </div>
+    <div class="scroller">
+      <table>
+        <caption>Known programmes · nomination-based, seat counts not published</caption>
+        <thead><tr><th>Programme</th><th>Days</th><th>Who attends</th><th class="num">Seats</th></tr></thead>
+        <tbody>
+          <tr><td class="course-name">Basic Mountaineering</td><td class="num">~28</td><td>ITBP / CAPF personnel</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Advance Mountaineering</td><td class="num">~28</td><td>ITBP / CAPF personnel</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Ski courses<em>Basic and advance</em></td><td class="num">~14</td><td>ITBP / CAPF personnel</td><td class="num">not published</td></tr>
+          <tr><td class="course-name">Snow &amp; ice acclimatisation<em>Auli 6–7 d, then Badrinath 5–6 d</em></td><td class="num">12–13</td><td>Indian Antarctic expedition members, via NCPOR</td><td class="num">by selection</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">The Antarctic capsule is the one route in for a non-uniformed civilian, and it is not an open course — it is the mandatory screening step after the medical for anyone selected for an Indian Scientific Expedition to Antarctica, covering knots, rock and snow craft, tent pitching, survival and rescue.</p>
+  </article>
+</section>
+
+<div class="legend">
+  <span class="pill open">seats left</span>
+  <span class="pill limited">few left / stale row</span>
+  <span class="pill shut">closed, full or sold</span>
+  <span>“n/p” = the institute publishes no figure.</span>
+</div>
+
+<footer>
+  <h4>How to read the seat numbers</h4>
+  <ul>
+    <li><b>HMI and NIMAS</b> publish a live seats-remaining count per batch; those are the figures shown, captured 5 September 2026, and they move daily.</li>
+    <li><b>NIM, JIM and ABVIMAS</b> publish sanctioned intake per course and mark a batch “full” or “closed” — the number in the seats column is capacity, not vacancy.</li>
+    <li><b>SGMI, HAWS and MSI Auli</b> publish nothing; the tables record the course structure that is documented and say so where a figure does not exist.</li>
+    <li>Fees are Indian-national rates unless noted. HMI, NIM and JIM subsidise most seats and sell a small number at actual cost; ABVIMAS and NIMAS charge foreign nationals 3–4×, and NIMAS currently admits Indian nationals only.</li>
+  </ul>
+  <h4 style="margin-top:20px">Sources</h4>
+  <ul>
+    <li><a href="https://admission.hmidarjeeling.com/online-admission-2026-2027/">HMI Darjeeling — online admission 2026-27</a> and <a href="https://hmidarjeeling.com/course-programme/course-programme-2025-2026/">course programme</a></li>
+    <li><a href="https://www.nimindia.net/downloads">NIM Uttarkashi — training programme 2026 and 2027 (PDF)</a></li>
+    <li><a href="https://www.jawaharinstitutepahalgam.com/pdf/courses_final.pdf">JIM &amp; WS Pahalgam — course programme 2026-27 (PDF)</a></li>
+    <li><a href="https://nimasdirang.com/Mountaineering-courses">NIMAS Dirang — course pages with live availability</a></li>
+    <li><a href="https://www.abvimas.org/course/list-of-courses/">ABVIMAS Manali — list of courses</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Sonam_Gyatso_Mountaineering_Institute">SGMI Gangtok</a> · <a href="https://en.wikipedia.org/wiki/High_Altitude_Warfare_School">HAWS</a> · <a href="https://ncpor.res.in/files/AL-35ISEA/AL-07%20Advisory%20for%20Pre%20Antarctic%20Training%20at%20ITBP%20Auli.pdf">NCPOR advisory on ITBP Auli training (PDF)</a></li>
+  </ul>
+</footer>
+</main>
+</body>
+</html>
